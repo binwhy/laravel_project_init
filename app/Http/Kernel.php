@@ -61,6 +61,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'cors' => \Medz\Cors\Laravel\Middleware\ShouldGroup::class,//解决跨越问题
+        'api.token.refresh' => \App\Http\Middleware\Api\RefreshApiTokenMiddleware::class,//刷新普通用户(管理员)的token
+        'admin.guard'=>\App\Http\Middleware\Api\AdminGuardMiddleware::class,
+        'api.guard'=>\App\Http\Middleware\Api\UserGuardMiddleware::class,
     ];
 
     /**
